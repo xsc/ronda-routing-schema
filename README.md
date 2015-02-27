@@ -41,5 +41,6 @@ Copyright &copy; 2015 Yannick Scherer
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.
 
+[descriptor]: https://github.com/xsc/ronda-routing#route-descriptors
 [routing]: https://github.com/xsc/ronda-routing
 [schema]: https://github.com/xsc/ronda-schema
