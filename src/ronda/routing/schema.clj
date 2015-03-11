@@ -4,7 +4,9 @@
              [request :as request]
              [middleware :as rm]]
             [ronda.schema.middleware :as sm]
-            [ronda.schema.data.request :refer [compile-requests]]))
+            [ronda.schema.data
+             [request :refer [compile-requests]]
+             [ring :refer [normalize-request]]]))
 
 (defn enable-schema
   "Set the schema (a schema map by request method, according to ronda.schema's
@@ -42,9 +44,13 @@
 
 (defn wrap-schemas
   "Wrap the given handler to validate requests against a schema that was
-   attached to it by the `RouteDescriptor`-based routing middleware."
+   attached to it by the `RouteDescriptor`-based routing middleware.
+
+   If no schema is found, the request will only be normalized."
   [handler]
-  (rm/conditional-middleware
-    handler
-    has-schema?
-    wrap-schemas*))
+  (let [schema-handler (wrap-schemas* handler)
+        other-handler  (comp handler normalize-request)]
+    (fn [request]
+      (if (has-schema? request)
+        (schema-handler request)
+        (other-handler request)))))
