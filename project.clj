@@ -1,4 +1,4 @@
-(defproject ronda/routing-schema "0.1.1-SNAPSHOT"
+(defproject ronda/routing-schema "0.1.1"
   :description "ronda RouteDescriptor-based schema validation."
   :url "https://github.com/xsc/ronda-routing-schema"
   :license {:name "Eclipse Public License"
