@@ -5,7 +5,7 @@ request/response schema validation based on `RouteDescriptor` metadata.
 
 ## Usage
 
-__Leiningen__ ([via Clojars](https://clojars.org/ronda/routing-schema)
+__Leiningen__ ([via Clojars](https://clojars.org/ronda/routing-schema))
 
 [![Clojars
 Project](http://clojars.org/ronda/routing-schema/latest-version.svg)](http://clojars.org/ronda/routing-schema)
