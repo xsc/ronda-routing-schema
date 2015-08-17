@@ -59,3 +59,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 ```
+
+[descriptor]: https://github.com/xsc/ronda-routing#route-descriptors
+[routing]: https://github.com/xsc/ronda-routing
+[schema]: https://github.com/xsc/ronda-schema
