@@ -4,6 +4,7 @@
              [request :as request]
              [middleware :as rm]]
             [ronda.schema.middleware :as sm]
+            [ronda.schema.coercer :refer [default-coercer-factory]]
             [ronda.schema.data
              [request :refer [compile-requests]]
              [ring :refer [normalize-request]]]))
@@ -11,12 +12,14 @@
 (defn enable-schema
   "Set the schema (a schema map by request method, according to ronda.schema's
    expectations) for the given route."
-  [descriptor route-id schema]
-  (let [compiled-schema (compile-requests schema)]
-    (describe/update-metadata
+  ([descriptor route-id schema]
+   (enable-schema descriptor route-id schema (default-coercer-factory)))
+  ([descriptor route-id schema coercer-factory]
+   (let [compiled-schema (compile-requests schema coercer-factory)]
+     (describe/update-metadata
       descriptor
       route-id
-      #(assoc % :schema compiled-schema))))
+      #(assoc % :schema compiled-schema)))))
 
 (defn attached-schema
   "Get schema the given request should be validated against."
